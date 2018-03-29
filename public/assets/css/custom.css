@@ -1,0 +1,131 @@
+.menu-divider {
+	color: #8b8b8b;
+}
+.postdate {
+	text-transform: uppercase;
+}
+.blog-classic .date {
+	width: 70px;
+	height: 70px;
+	padding-top: 0;
+}
+.blog-classic {
+	padding-bottom: 35px;
+}
+.g-recaptcha div{
+  margin: 20px auto!important;
+  padding: 0!important;
+  /*width: 100%!important;*/
+ }
+.g-recaptcha .rc-anchor-normal .rc-anchor-checkbox-label {
+	width: 102px!important;
+}
+.menuzord-menu > li > a {
+	font-size: 12px;
+}
+.widget-tags {
+	height: 100%!important;
+}
+.widget-tags a:hover {
+	color: #fff!important;
+}
+.post-page {
+	margin-bottom: 20px!important;
+}
+.comments-form-control {
+	font-size: 15px!important;
+	color: #777!important;
+}
+.ui.comments .comment .text {
+	color: #7e7e7e!important;
+}
+.author {
+	color: #333!important;
+	opacity: .87!important;
+}
+.actions {
+	padding-bottom: 5px!important;
+}
+.dark-link {
+	color: #333!important;
+	text-transform: uppercase!important;
+	font-size: 13px!important;
+}
+.dark-link:hover {
+	color: #d6b161!important;
+}
+.ya-share2__container {
+	position: relative!important;
+	margin: 0 auto!important;
+	/*margin-left: 40px!important;*/
+}
+.ya-share2__popup {
+	position: absolute!important;
+	right: -37px!important;
+}
+.avatar {
+	width: 3.2em!important;
+}
+.ui.comments .comment > .avatar ~ .content {
+	margin-left: 4.2em!important;
+}
+.logo-wrap {
+	position: relative;
+}
+.logo-sign {
+	position: absolute;
+	left: 55px;
+	top: 35px;
+	color: #fff;
+}
+.hljs {
+	width: 1000px;
+	font-size: 15.2px;
+	max-height: 500px;
+}
+
+div.cart_result {
+  font-family: Raleway, Helvetica , sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ff6666;
+  border: 2px solid #ff6666;
+  position: absolute;
+  bottom: -5%;
+  right: 25%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); 
+  width: 60%;
+  height: 8em;
+  display: none;
+  align-items: center;
+  justify-content: center 
+}
+div.cart_result p {
+  margin: 0
+}
+
+.logo-sign {
+	text-transform: none;
+}
+  /**/
+  /**/
+
+@media screen and (max-width: 768px) {
+	.xs-m-top {
+		margin-top: 30px;
+	}
+	.logo-sign {
+		left: 45px;
+		top: 27px;
+	}
+	.small_scr {
+		margin-top: 25px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.xs-m-top {
+		margin-top: 60px;
+	}
+}
