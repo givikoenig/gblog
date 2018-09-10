@@ -134,7 +134,8 @@ class PostController extends Controller
     protected function grid()
     {
         return Admin::grid(Post::class, function (Grid $grid) {
-
+            
+            $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->sortable();
             $grid->title('Заголовок')->editable();
             $grid->user()->name('Автор');
@@ -152,7 +153,7 @@ class PostController extends Controller
             });
             $grid->posttype()->name('Тип');
             $grid->alias('Slug');
-            $grid->created_at('Дата создания');
+            $grid->created_at('Дата создания')->sortable();
             $grid->updated_at('Дата обновления');
             $grid->actions(function ($actions) {
                 $actions->disableDelete();

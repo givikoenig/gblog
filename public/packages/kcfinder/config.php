@@ -35,7 +35,7 @@ $_CONFIG = array(
 
     'theme' => "oxygen",
 
-    'uploadURL' => "http://gblog.loc/userfiles/upload",
+    'uploadURL' => "http://givik.ru/userfiles/upload",
     'uploadDir' => "",
 
     'dirPerms' => 0755,

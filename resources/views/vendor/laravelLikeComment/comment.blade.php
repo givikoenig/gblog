@@ -11,7 +11,7 @@ $GLOBALS['commentClass'] = -1;
         <form class="ui laravelComment-form form" id="{{ $comment_item_id }}-comment-form" data-parent="0" data-item="{{ $comment_item_id }}" style="display: none;">
             @if(!Auth::check())
             <br />
-             <h6><a href="{{ route('register') }}">Зарегистрируйтесь</a>, чтобы оставить комментарий.</h6>
+             <h6><a href="{{ route('login') }}">Авторизуйтесь</a> или <a href="{{ route('register') }}">зарегистрируйтесь</a>, чтобы оставить комментарий.</h6>
             @else
             <div class="field">
                 <textarea id="0-textarea" class="comments-form-control" rows="3" {{ $GLOBALS['commentDisabled'] }}></textarea>

@@ -38,22 +38,6 @@
                             </div>
                         </div>
                     @endif
-
-                    {{-- @if(isset($alltags))
-                    <div class="widget">
-                        <div class="heading-title-alt text-left heading-border-bottom">
-                            <h6 class="text-uppercase">Теги</h6>
-                        </div>
-                        <div class="widget-tags">
-                            <a href="{{ route('home') }}">Все</a>
-                            @foreach ($alltags as $tag)
-                            @if($tag->count) 
-                            <a href="{{ route('posts.index', ['category' => $tag->slug ]) }}" style="font-size: {{100 + $tag->count * 3}}%; color: rgb({{ 131 - $tag->count * 2 }}, {{ 127 - $tag->count * 2 }}, {{126 - $tag->count * 2 }}); ">{{ $tag->name }}</a>
-                            @endif
-                            @endforeach
-                        </div>
-                    </div>
-                    @endif --}}
                     <!--tags widget-->
                     <!--latest post widget-->
                     @if(isset($lasts))
@@ -79,7 +63,6 @@
                     </div>
                     @endif 
                     <!--latest post widget-->
-
                     <!--follow us widget-->
                            {{--  <div class="widget">
                                 <div class="heading-title-alt text-left heading-border-bottom">
@@ -92,26 +75,6 @@
                                 </div>
                             </div> --}}
                             <!--follow us widget-->
-
-                            <!--category widget-->
-                            {{-- <div class="widget">
-                                <div class="heading-title-alt text-left heading-border-bottom">
-                                    <h6 class="text-uppercase">Темы</h6>
-                                </div>
-                                <ul class="widget-category">
-                                    <li><a href="#">Animals</a>
-                                    </li>
-                                    <li><a href="#">Landscape</a>
-                                    </li>
-                                    <li><a href="#">Portrait</a>
-                                    </li>
-                                    <li><a href="#">Wild Life</a>
-                                    </li>
-                                    <li><a href="#">Video</a>
-                                    </li>
-                                </ul>
-                            </div> --}}
-                            <!--category widget-->
                             <!--comments widget-->
                             @if (isset($lastcomments))
                             <div class="widget">
@@ -202,26 +165,7 @@
                                     {{-- share widget --}}
                                     <div class="clearfix inline-block m-top-50 m-bot-50">
                                         <h6 class="text-uppercase">Поделиться </h6>
-
-                                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                        {{-- <div class="addthis_inline_share_toolbox"></div> --}}
-
                                         <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-image="{{ asset('assets')  . '/img/post/' .  $post->img }}" data-title="{{ $post->title }}"  data-description="{!! $post->desc !!}" data-limit="3" data-counter></div>
-
-
-                                        {{-- <div class="widget-social-link circle"> --}}
-                                           
-                                            {{-- <a  onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}&title={{ $post->title }}&image={{ asset('assets') }}/img/post/{{ json_decode($post->img, true)['max'] }}')" href="javascript: void(0)" >
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="javascript: void(0)" onclick="window.open('http://twitter.com/intent/tweet?status={{ $post->title }}+{{ urlencode(Request::fullUrl()) }}')"><i class="fa fa-twitter"></i></a>
-
-                                            <a href="javascript: void(0)"><i class="fa fa-vk"></i></a>
-
-                                            <a onclick="window.open('https://plus.google.com/share?url={{ urlencode(Request::fullUrl()) }}')" href="javascript: void(0)"><i class="fa fa-google-plus"></i></a>
-
-                                            <a href="javascript: void(0)" onclick="window.open('http://pinterest.com/pin/create/bookmarklet/?media={{ asset('assets') }}/img/post/{{ json_decode($post->img, true)['max'] }}&url={{ urlencode(Request::fullUrl()) }}&is_video=false&description={{ $post->title }}')"><i class="fa fa-pinterest"></i></a> --}}
-                                        {{-- </div> --}}
                                     </div>
                                     {{-- ./share widget --}}
                                     {{-- posts simple pagination --}}
@@ -273,14 +217,12 @@
                             @include('laravelLikeComment::comment', ['comment_item_id' => $post->id ])
                             @endif
                             <!--classic image post-->
-                            
                         </div><!--/col-md-8-->
                     </div><!--/row-->
                 </div><!--/container-->
             </div><!--/page-content -->
         </section>
         @endsection
-
         @section('footer')
         @include('posts.footer')
         @endsection

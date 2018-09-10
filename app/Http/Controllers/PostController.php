@@ -35,7 +35,7 @@ class PostController extends Controller {
         $this->title = config('app.name');
         $this->meta_desc = 'GiviK blog';
         $this->keywords = 'GiviK blog';
-        $this->image = 'http://gblog.loc/assets/img/posts/photo_7830_20081101.jpg';
+        $this->image = 'https://givik.ru/assets/img/posts/photo_7830_20081101.jpg';
         $this->desc = 'GiViK IT:SYS:WEB:PRO v.1.0';
     }
   

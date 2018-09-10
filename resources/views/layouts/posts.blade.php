@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta name="author" content="Mosaddek"> --}}
 
     <meta property="og:title" content="{{ $title or 'GIviK' }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ $image or 'http://gblog.loc/assets/img/posts/photo_7830_20081101.jpg' }}" />
+    <meta property="og:image" content="{{ $image or 'https://givik.ru/assets/img/posts/photo_7830_20081101.jpg' }}" />
     <meta property="og:description" content="{!! $desc or 'GiViK IT:SYS:WEB:PRO v.1.0' !!}" />
     <meta property="og:url" content="{{ url()->current() }}" />
-
 
     <!--favicon icon-->
     <link rel="icon" href="{{ asset('assets') }}/img/favicon.ico">
@@ -46,6 +46,8 @@
     <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet"> 
     
     <!-- endinject -->
+    
+    <!--<script src="{{ asset('js/app.js') }}"></script>-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -61,7 +63,7 @@
         <div class="tb-preloader-wave"></div>
     </div>
     <!-- preloader end -->
-
+   
     <div class="wrapper">
 
         <!--top bar-->
@@ -73,19 +75,17 @@
         <!--header end-->
         
         <!--body content start-->
-
         {!! NoCaptcha::renderJs() !!}
-
         @yield('content')
         <!--body content end-->
-
+   
         <!--footer start 1-->
         @yield('footer')
         <!--footer 1 end-->
     </div>
-
-
+       
     <!-- inject:js -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/vendor/modernizr/modernizr.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.fancybox.min.js') }}"></script>
@@ -98,7 +98,7 @@
     <script src="{{ asset('assets/vendor/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/elasic-slider/jquery.eislideshow.js') }}"></script>
     <script src="{{ asset('assets/vendor/flex-slider/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/gmap/jquery.gmap.min.js') }}"></script>
+    <!--<script src="{{ asset('assets/vendor/gmap/jquery.gmap.min.js') }}"></script>-->
     <script src="{{ asset('assets/vendor/images-loaded/imagesloaded.js') }}"></script>
     <script src="{{ asset('assets/vendor/isotope/jquery.isotope.js') }}"></script>
     <script src="{{ asset('assets/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
@@ -120,18 +120,17 @@
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-    {{-- laravel-like-comment --}}
+    <!-- laravel-like-comment -->
     <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
-    
 
     <!-- endinject -->
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-{{-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a6b03ef7a5572f3"></script> --}}
 
 <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="//yastatic.net/share2/share.js"></script>
 
 </body>
-
+<!-- script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script-->
+<!-- production-версия, оптимизированная для размера и скорости-->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<!-- script src="https://unpkg.com/@saeris/vue-spinners"></script-->
 </html>

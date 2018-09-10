@@ -30,8 +30,7 @@ class UserController extends Controller {
     */
     public function index() {
     //Get all users and pass it to the view
-        $users = User::all();
-
+        $users = User::OrderBy('created_at', 'desc')->paginate(20);
         return view('users.index')->with('users', $users);
     }
 

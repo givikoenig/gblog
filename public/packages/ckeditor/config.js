@@ -22,10 +22,10 @@ config.allowedContent = true;
 config.basicEntities = false;
 
 
-config.filebrowserBrowseUrl = 'http://gblog.loc/packages/kcfinder/browse.php?opener=ckeditor&type=files';
-config.filebrowserImageBrowseUrl = 'http://gblog.loc/packages/kcfinder/browse.php?opener=ckeditor&type=images';
-config.filebrowserFlashBrowseUrl = 'http://gblog.loc/packages/kcfinder/browse.php?opener=ckeditor&type=flash';
-config.filebrowserUploadUrl = 'http://gblog.loc/packages/kcfinder/upload.php?opener=ckeditor&type=files';
-config.filebrowserImageUploadUrl = 'http://gblog.loc/packages/kcfinder/upload.php?opener=ckeditor&type=images';
-config.filebrowserFlashUploadUrl = 'http://gblog.loc/packages/kcfinder/upload.php?opener=ckeditor&type=flash';
+config.filebrowserBrowseUrl = 'http://givik.ru/packages/kcfinder/browse.php?opener=ckeditor&type=files';
+config.filebrowserImageBrowseUrl = 'http://givik.ru/packages/kcfinder/browse.php?opener=ckeditor&type=images';
+config.filebrowserFlashBrowseUrl = 'http://givik.ru/packages/kcfinder/browse.php?opener=ckeditor&type=flash';
+config.filebrowserUploadUrl = 'http://givik.ru/packages/kcfinder/upload.php?opener=ckeditor&type=files';
+config.filebrowserImageUploadUrl = 'http://givik.ru/packages/kcfinder/upload.php?opener=ckeditor&type=images';
+config.filebrowserFlashUploadUrl = 'http://givik.ru/packages/kcfinder/upload.php?opener=ckeditor&type=flash';
 };

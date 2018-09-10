@@ -4118,7 +4118,10 @@ blockquote {
 .widget-latest-post .thumb {
     float: left;
     width: 75px;
-    height: auto; 
+    /*height: 55px;*/
+    /*width: auto;*/
+    height: auto;
+    /*max-height: 65px; */
     margin-right: 20px;
 }
 

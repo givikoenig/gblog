@@ -1,4 +1,3 @@
-{{-- \resources\views\users\index.blade.php --}}
 @extends('layouts.app')
 
 @section('title', '| Users')
@@ -43,6 +42,9 @@
             </tbody>
 
         </table>
+        <div class="text-center" >
+            {{ $users->links() }}
+        </div>
     </div>
 
     <a href="{{ route('users.create') }}" class="btn btn-success">Add User</a>

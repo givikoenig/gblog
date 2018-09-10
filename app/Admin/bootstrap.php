@@ -22,6 +22,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use App\Admin\Extensions\Form\CKEditor;
 
+Form::extend('ckeditor', CKEditor::class);
+
 Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
 
     $navbar->left(view('link-to-home'));
@@ -29,6 +31,4 @@ Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
 });
 
 Form::forget(['map', 'editor']);
-
-Form::extend('ckeditor', CKEditor::class);
 
