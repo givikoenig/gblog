@@ -1,0 +1,17 @@
+{
+    "elements": {
+        "style": {}
+    },
+    "attributes": {
+        "v-bind:title": {
+            "context": "span"
+        },
+        "v-if": {},
+        "v-on:click": {},
+        "v-for": {
+            "context": "li"
+        },
+        ":href": {},
+        "v-model": {}
+    }
+}

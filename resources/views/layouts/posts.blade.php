@@ -23,6 +23,7 @@
     {{-- <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'> --}}
 
     <!-- inject:css -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.css') }}">
@@ -47,8 +48,6 @@
     
     <!-- endinject -->
     
-    <!--<script src="{{ asset('js/app.js') }}"></script>-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="assets/vendor/backward/html5shiv.js"></script>

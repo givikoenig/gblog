@@ -23,11 +23,19 @@ Vue.component('vfor-component', require('./components/VforComponent.vue'));
 Vue.component('von-component', require('./components/VonComponent.vue'));
 Vue.component('vmodel-component', require('./components/VmodelComponent.vue'));
 Vue.component('spinner-component', require('./components/SpinnerComponent.vue'));
+Vue.component('prop-component', require('./components/PropComponent.vue'));
 
 
 //const app = new Vue({
 //    el: '#app'
 //});
+var prop = new Vue ({
+    el: '#prop'
+});
+
+var example = new Vue ({
+    el: '#example'
+});
 
 var mesg = new Vue ({
     el: '#mesg'

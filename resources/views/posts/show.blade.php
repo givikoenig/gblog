@@ -88,7 +88,7 @@
                                             $lastcomment_user = App\User::find($lastcomment->user_id);
                                         @endphp
                                         @if ($lastcomment_user)
-                                            <li>{{ App\User::find($lastcomment->user_id)->name }}, {{ Date::parse($lastcomment->created_at)->format('d M Y, H:i')  }}<br />Статья: <a href="{{ route('posts.show', ['alias' => $lastpost->alias] ) }}" class="dark-link">"{{ $lastpost->title }}"</a> <br /> <a href="{{ route('posts.show', [ 'alias' => $lastpost->alias.'#post-comments' ] ) }}">{{ str_limit($lastcomment->comment, 100, '…') }}</a>
+                                            <li>{{ App\User::find($lastcomment->user_id)->name }}, {{ Date::parse($lastcomment->created_at)->format('d M Y, H:i')  }}<br />Статья: <a href="{{ route('posts.show', ['alias' => $lastpost->alias] ) }}" class="dark-link">"{{ $lastpost->title }}"</a> <br /> <a href="{{ route('posts.show', [ 'alias' => $lastpost->alias.'#post-comments' ] ) }}">{!! str_limit($lastcomment->comment, 100, '…') !!}</a>
                                             </li>
                                         @endif
                                     @endforeach
@@ -96,6 +96,12 @@
                             </div>
                             @endif
                             <!--comments widget-->
+                            
+<!--                            <div id="prop">
+                                <prop-component :urldata="{{ json_encode($url_data) }}"></prop-component>
+                            </div>-->
+                                
+                            
                         </div><!--./col-md-4-->
                         <div class="col-md-8">
                             <!--classic image post-->

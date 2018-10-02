@@ -40,7 +40,7 @@ function dfs($comments, $comment){
                 <span class="date">{{ Date::parse($comment->updated_at)->diffForHumans() }}</span>
             </div>
             <div class="text">
-                {{ $comment->comment }}
+                {!! $comment->comment !!}
             </div>
             <div class="actions">
                 <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Ответить</a>

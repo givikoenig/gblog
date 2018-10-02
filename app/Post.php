@@ -8,7 +8,7 @@ use DB;
 class Post extends Model
 {
 
-	protected $fillable = [ 'title', 'body', 'desc', 'alias', 'img', 'pictures', 'user_id'];
+	protected $fillable = [ 'title', 'body', 'desc', 'alias', 'img', 'pictures', 'user_id', 'active'];
     //
     public function scopeSearchByKeyword($query, $keyword)
     {

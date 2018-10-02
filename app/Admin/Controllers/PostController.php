@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,30 @@ class PostController extends Controller
     //     return $this;
     // }
 
+public function show($id)
+    {
+        return Admin::content(function (Content $content) use ($id) {
 
+            $content->header('Post');
+            $content->description('Detail');
+//            $content->body(Admin::show(Post::findOrFail($id)));
+            $content->body(Admin::show(Post::findOrFail($id), function (Show $show) {
+                $show->panel()
+                    ->style('primary')
+                    ->title('');
+                $show->id('ID');
+                $show->title('Title');
+                $show->active();
+                $show->body();
+//                $show->body()->as(function ($body) {
+//                    return "<pre>{$body}</pre>";
+//                });
+                $show->created_at();
+                $show->updated_at();
+
+            }));
+        });
+    }
 
 
     /**
@@ -151,6 +175,11 @@ class PostController extends Controller
                 $comments = Comment::where('item_id', $this->id)->count();
                 return $comments;
             });
+            $states = [
+                'on'  => ['value' => 1, 'text' => 'YES', 'color' => 'primary'],
+                'off' => ['value' => 0, 'text' => 'NO', 'color' => 'default'],
+            ];
+            $grid->active()->switch($states);
             $grid->posttype()->name('Тип');
             $grid->alias('Slug');
             $grid->created_at('Дата создания')->sortable();
@@ -212,15 +241,14 @@ class PostController extends Controller
             // $form->display('alias','Slug');
 
             // $form->multipleSelect('tags', 'Теги')->options($tags);
+            $form->switch('active')->options([1 => 'Опубликовано', 0 => 'Не опубликовано'])->default(0);
             $form->multipleSelect('tags', 'Теги')->options(Tag::all()->pluck('name','id'));
             $form->text('keywords');
             $form->text('meta_desc');
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
-
             // $form->tags('tags');
-
             // $form->tools(function(Form\Tools $tools) {
             //     $tools->add('<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;delete</a>');
             // });

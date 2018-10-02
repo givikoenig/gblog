@@ -57,12 +57,12 @@ class PostController extends Controller {
             $keyword = Input::get('keyword', '');
 
         if(isset($category)) {
-             $posts = Tag::find($category)->posts()->orderBy('created_at', 'desc')->paginate(5);
+             $posts = Tag::find($category)->posts()->orderBy('created_at', 'desc')->paginate(4);
         } else {
             if ($keyword) {
-             $posts = Post::SearchByKeyword($keyword)->paginate(5);
+             $posts = Post::SearchByKeyword($keyword)->paginate(4);
             } else {
-                $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+                $posts = Post::orderBy('created_at', 'desc')->paginate(4);
             }
         }
 
@@ -187,7 +187,19 @@ class PostController extends Controller {
 
         // get next post id
         $next = Post::where('id', '>', $post->id)->min('id');
-
+        
+        $url_data = [
+    		array(
+    			'title' => 'DKA-DEVELOP',
+    			'url' => 'https://dka-develop.ru'
+    		),
+    		array(
+    			'title' => 'GiViK',
+    			'url' => 'http://givik.ru'
+    		)
+    	];
+//        json_encode($url_data);
+        
         if (view()->exists('posts.show')) {
             return view('posts.show', compact('post'), [
                 'title' => $data['title'],
@@ -196,7 +208,6 @@ class PostController extends Controller {
                 'image' => $data['image'],
                 'desc' => $data['desc'],
                 'slides' => $slides,
-                // 'tags' => $tags,
                 'previous' => $previous,
                 'next' => $next,
                 'commentcount' => $commentcount,
@@ -204,6 +215,7 @@ class PostController extends Controller {
                 'alltags' => $this->alltags,
                 'lastcomments' => $this->lastcomments,
                 'og' => $og,
+                'url_data' => $this->lastposts
                 
             ]);
         }
