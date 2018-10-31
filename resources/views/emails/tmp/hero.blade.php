@@ -21,7 +21,7 @@
               <table align="center" class="container"><tbody><tr><td>
                 <table class="row collapse"><tbody><tr>
                   <th class="small-6 large-6 columns first"><table><tr><th>
-                    <img src="{{-- http://placehold.it/200x50/663399 --}}{{ asset('')}}/img/official-logo.png" height="50">
+                    <img src="{{ asset('')}}/img/official-logo.png" height="50">
                   </th></tr></table></th>
                   <th class="small-6 large-6 columns last"><table><tr><th>
                     <p class="text-right">HERO</p>
@@ -38,7 +38,7 @@
                 <th class="small-12 large-12 columns first last"><table><tr><th>
                   <h1>Здорово, други!</h1>
                   <p class="lead">Глава 6. Шизофрения, как и было сказано</p>
-                  <img src="{{-- http://placehold.it/580x300 --}}{{asset('')}}/images/1.jpg " alt="">
+                  <img src="{{asset('')}}/img/188257_800.jpg " alt="">
                   <table class="callout"><tr><th class="callout-inner primary"  style="background: #e8f7c2; border: 1px solid #919191;">
                     <p>Многие люди мечтают когда-нибудь поехать заграницу. Это вполне нормальное и реальное желание. Человеку хочется отдохнуть и увидеть ту часть света, в которой он еще не был. Если заграничный паспорт готов, то остается только оформить визу <a href="http://www.easy-visa.ru/">тут</a> в страну, которая Вас заинтересовала. </p>
                   </th><th class="expander"></th></tr></table>

@@ -13,6 +13,9 @@
 
 Route::get('/', 'PostController@index')->name('home');
 
+Route::get('/socket', 'SocketController@index')->name('socket');
+Route::get('/socket-chart', 'SocketController@newEvent');
+
 Route::get('/profile', 'ProfileController@profile')->name('profile');
 
 Route::post('/profile', 'ProfileController@update_profile')->name('update_profile');
@@ -27,6 +30,10 @@ Route::resource('posts', 'PostController');
 
 Route::get('404', ['as' => '404', 'uses' => 'ErrorController@notfound']);
 Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
+
+Route::get('/send/email', 'PostController@mail');
+Route::get('/api/search', 'SearchController@search');
+Route::get('/api/username', 'SearchController@username');
 
 Auth::routes();
 Route::get('/logout','Auth\LoginController@logout');

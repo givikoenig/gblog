@@ -76,7 +76,7 @@
                             @php
                             $lastpost = App\Post::find($lastcomment->item_id);
                             @endphp
-                            <li>{{ App\User::find($lastcomment->user_id)  ? App\User::find($lastcomment->user_id)->name : '' }}, {{ Date::parse($last->created_at)->format('d M Y, H:i')  }}<br />Статья: <a href="{{ route('posts.show', ['alias' => $lastpost->alias] ) }}" class="dark-link">"{{ $lastpost->title }}"</a> <br /> <a href="{{ route('posts.show', [ 'alias' => $lastpost->alias.'#post-comments' ] ) }}">{{ str_limit($lastcomment->comment, 100, '…') }}</a>
+                            <li>{{ App\User::find($lastcomment->user_id)  ? App\User::find($lastcomment->user_id)->name : '' }}, {{ Date::parse($lastcomment->created_at)->format('d M Y, H:i')  }}<br />Статья: <a href="{{ route('posts.show', ['alias' => $lastpost->alias] ) }}" class="dark-link">"{{ $lastpost->title }}"</a> <br /> <a href="{{ route('posts.show', [ 'alias' => $lastpost->alias.'#post-comments' ] ) }}">{{ str_limit($lastcomment->comment, 100, '…') }}</a>
                             </li>
                             @endforeach
                         </ul>

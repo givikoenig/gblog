@@ -24,11 +24,9 @@ Vue.component('von-component', require('./components/VonComponent.vue'));
 Vue.component('vmodel-component', require('./components/VmodelComponent.vue'));
 Vue.component('spinner-component', require('./components/SpinnerComponent.vue'));
 Vue.component('prop-component', require('./components/PropComponent.vue'));
+Vue.component('socket-component', require('./components/SocketComponent.vue'));
+Vue.component('headersearch-component', require('./components/HeaderSearchComponent.vue'));
 
-
-//const app = new Vue({
-//    el: '#app'
-//});
 var prop = new Vue ({
     el: '#prop'
 });
@@ -63,5 +61,13 @@ var vmodel = new Vue({
 
 var vspinner = new Vue({
     el: '#vspinner'
+});
+
+var socket = new Vue({
+    el: '#socket'
+});
+
+const app = new Vue({
+    el: '#app'
 });
 

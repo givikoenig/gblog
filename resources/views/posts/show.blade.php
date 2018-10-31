@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+
 {{-- {!! $og->renderTags() !!} --}}
 <section class="body-content ">
     <div class="page-content">

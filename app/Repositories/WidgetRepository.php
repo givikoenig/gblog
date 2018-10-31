@@ -9,7 +9,7 @@ use App\Tag;
 class WidgetRepository {
 
 	public function getLastComments () {
-        $lastcomments = Comment::orderBy('created_at', 'desc')->take(4)->get();
+        $lastcomments = Comment::latest()->take(4)->get();
         return $lastcomments;
     }
 
@@ -18,7 +18,7 @@ class WidgetRepository {
         return $alltags;
     }
     public function getLastPosts () {
-        $lasts = Post::orderBy('created_at', 'desc')->get()->take(4);
+        $lasts = Post::latest()->get()->take(4);
         return $lasts;
     }
 

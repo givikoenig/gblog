@@ -8,10 +8,20 @@
         },
         "v-if": {},
         "v-on:click": {},
+        "v-bind:href": {
+            "context": "a"
+        },
+        "v-html": {
+            "context": "p"
+        },
         "v-for": {
             "context": "li"
         },
+        ":src": {},
         ":href": {},
+        "v-debounce": {
+            "context": "input"
+        },
         "v-model": {}
     }
 }

@@ -1,5 +1,5 @@
 <header class="l-header">
-    <div class="l-navbar l-navbar_compact l-navbar_t-dark js-navbar-sticky">
+    <div class="l-navbar l-navbar_compact l-navbar_t-dark js-navbar-sticky" id="app">
         <div class="container">
             <nav class="menuzord js-primary-navigation" role="navigation" aria-label="Primary Navigation">
                 <!--logo start-->
@@ -60,15 +60,17 @@
                     @endif
 
                     <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
+                    
+                    <headersearch-component></headersearch-component>
 
-                    <li>
+<!--                    <li>
                         <a href="javascript:void(0)"><i class="fa fa-search"></i> Поиск</a>
                         <div class="megamenu megamenu-quarter-width navbar-search">
                             <form role="searchform" action="{{ route('home') }}">
                                 <input type="text" class="form-control" placeholder="Поиск статьи…" name="keyword">
                             </form>
                         </div>
-                    </li>
+                    </li>-->
                 </ul>
                 <!--mega menu end-->
             </nav>

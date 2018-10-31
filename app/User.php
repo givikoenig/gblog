@@ -47,14 +47,16 @@ class User extends Authenticatable
     public static function getAuthor($id)
     {
         $user = self::find($id);
-        return [
-            'id'     => $user->id,
-            'name'   => $user->name,
-            'email'  => $user->email,
-            'url'    => '',  // Optional
-            'avatar' => $user->avatar,  // Custom user's avatar
-            'admin'  => $user->role === 'admin', // bool
-        ];
+        if(is_object($user)) {
+            return [
+                'id'     => $user->id,
+                'name'   => $user->name,
+                'email'  => $user->email,
+                'url'    => '',  // Optional
+                'avatar' => $user->avatar,  // Custom user's avatar
+                'admin'  => $user->role === 'admin', // bool
+            ];
+        }
     }
 
     /**

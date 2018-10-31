@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Repositories\WidgetRepository;
 use App\Repositories\PblRepository;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use risul\LaravelLikeComment\Models\Comment;
 
 use App\Post;
@@ -13,6 +14,7 @@ use App\Tag;
 use Auth;
 use Session;
 use OpenGraph;
+use App\Mail\ViewHero;
 
 class PostController extends Controller {
 
@@ -44,18 +46,11 @@ class PostController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(Request $request) {
-        
         $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->desc);
-
-
         if (view()->exists('posts.index')) {
-
             $category = $request['category'];
-
             $keyword = Input::get('keyword', '');
-
         if(isset($category)) {
              $posts = Tag::find($category)->posts()->orderBy('created_at', 'desc')->paginate(4);
         } else {
@@ -65,18 +60,15 @@ class PostController extends Controller {
                 $posts = Post::orderBy('created_at', 'desc')->paginate(4);
             }
         }
-
         /** ===== массив для постов типа gallery ========= */ 
         $slides = [];
         foreach ($posts as $item) {
             $slides[$item->id] = $item->img_slide;
         }
         /** ===== End of массив для постов типа gallery ===== */
-        
         /** ===== данные для раздела "Обо мне" сайдбара ===== */
         $abouts = About::where('active', 1)->get();
         /** ===== End Of данные для раздела "Обо мне" сайдбара ===== */
-
         /** ==== массив коллекций тегов для каждой из статей  ======*/
         $tags = [];
         foreach ($posts as $post) {
@@ -95,7 +87,6 @@ class PostController extends Controller {
             ]);
         }
         abort(404);
-
     }
 
     /**
@@ -198,7 +189,6 @@ class PostController extends Controller {
     			'url' => 'http://givik.ru'
     		)
     	];
-//        json_encode($url_data);
         
         if (view()->exists('posts.show')) {
             return view('posts.show', compact('post'), [
@@ -275,4 +265,12 @@ class PostController extends Controller {
 
     }
 
+     public function mail()
+        {
+//           $name = 'Krunal';
+        Mail::to('ivan@enet.ru')->send(new ViewHero());
+
+           return 'Email was sent';
+        }
+    
 }

@@ -22,6 +22,9 @@
     <!--common style-->
     {{-- <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'> --}}
 
+    
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    
     <!-- inject:css -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -115,9 +118,10 @@
     <script src="{{ asset('assets/vendor/goup/jquery.goup.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/highlight/highlight.pack.js') }}"></script>
     <script src="{{ asset('assets/vendor/highlight/highlightjs-copy-button.js') }}"></script>
-    
+
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    
 
     <!-- laravel-like-comment -->
     <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
@@ -128,8 +132,9 @@
 <script src="//yastatic.net/share2/share.js"></script>
 
 </body>
-<!-- script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script-->
+ <!--script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script-->
 <!-- production-версия, оптимизированная для размера и скорости-->
 <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
 <!-- script src="https://unpkg.com/@saeris/vue-spinners"></script-->
+
 </html>
