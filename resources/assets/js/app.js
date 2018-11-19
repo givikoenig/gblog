@@ -25,7 +25,11 @@ Vue.component('vmodel-component', require('./components/VmodelComponent.vue'));
 Vue.component('spinner-component', require('./components/SpinnerComponent.vue'));
 Vue.component('prop-component', require('./components/PropComponent.vue'));
 Vue.component('socket-component', require('./components/SocketComponent.vue'));
+Vue.component('socket-chat-component', require('./components/SocketChatComponent.vue'));
+Vue.component('socket-private-component', require('./components/SocketPrivateComponent.vue'));
 Vue.component('headersearch-component', require('./components/HeaderSearchComponent.vue'));
+Vue.component('daterange-picker-component', require('./components/DateRangePickerComponent.vue'));
+Vue.component('ipcalc-component', require('./components/IpcalcComponent.vue'));
 
 var prop = new Vue ({
     el: '#prop'
@@ -65,6 +69,14 @@ var vspinner = new Vue({
 
 var socket = new Vue({
     el: '#socket'
+});
+
+var chat = new Vue({
+    el: '#chat'
+});
+
+var ipcalc = new Vue({
+    el: '#ipcalc'
 });
 
 const app = new Vue({

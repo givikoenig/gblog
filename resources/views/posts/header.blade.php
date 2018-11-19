@@ -16,10 +16,15 @@
                 <!--mega menu start-->
                 <ul class="menuzord-menu menuzord-right c-nav_s-standard">
                     @if( null !==  Route::current()  &&  !(Route::current()->getName() == 'home') ) 
-                    <li><a href="{{ route('home') }}">Главная</a></li>
-                    <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
+                        <li><a href="{{ route('home') }}">Главная</a></li>
+                        <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
                     @endif
-                    
+                    <li><a href="javascript:void(0)">Причиндалы</a>
+                        <ul class="dropdown">
+                            <li><a href="{{ route('ipcalc') }}"><i class="fa fa-btn fa-calculator"></i>&nbsp;&nbsp;IP Калькулятор</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Вход</a></li>
                         <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
@@ -33,16 +38,6 @@
                                         <a href="{{ url('/users') }}"><i class="fa fa-btn fa-users"></i>&nbsp;&nbsp;Пользователи</a>
                                     </li>
                                 @endrole
-                                {{-- @can('Create Post')
-                                    <li>
-                                        <a href="{{ route('posts.create') }}"><i class="fa fa-btn fa-file"></i>&nbsp;&nbsp;Добавить статью</a>
-                                    </li>
-                                @endcan --}}
-                                {{-- @can('Edit Post')
-                                    <li>
-                                        <a href="{{ route('posts.edit', ['id' => '2']) }}"><i class="fa fa-btn fa-file"></i>&nbsp;&nbsp;Редактировать статью</a>
-                                    </li>
-                                @endcan --}}
                                 <li>
                                     <a href="javascript: void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-btn fa-sign-out"></i>&nbsp;&nbsp;
                                         Выход
@@ -54,6 +49,10 @@
                                 <li>
                                     <a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>&nbsp;&nbsp;
                                     Профиль</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('chat') }}"><i class="fa fa-btn fa-comments"></i>&nbsp;&nbsp;
+                                    Чат</a>
                                 </li>
                             </ul>
                         </li>

@@ -27,5 +27,22 @@ jQuery(document).ready(function($) {
 	$('[data-fancybox="images"]').fancybox({
 		loop : true	
 	});
+        
+        // http://sharrre.com/ 
+        
+//        $('#facebook').sharrre({
+//        share: {
+//          facebook: true
+//        },
+//        enableHover: false,
+//        enableTracking: false,
+//        enableCounter: false,
+//        click: function(api, options) {
+//          api.simulateClick();
+//          api.openPopup('facebook');
+//        },
+//        template: '<i class="fab fa-facebook-f"></i> Facebook',
+//        url: 'http://givik.ru'
+//      });
 
 });

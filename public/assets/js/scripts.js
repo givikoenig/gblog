@@ -110,56 +110,56 @@
         /*==============================================
          Flex slider init
          ===============================================*/
-        $window.load(function () {
-            $(".portfolio-slider").flexslider({
-                animation: "slide",
-                direction: "vertical",
-                slideshowSpeed: 3000,
-                start: function () {
-                    imagesLoaded($(".portfolio"), function () {
-                        setTimeout(function () {
-                            $(".portfolio-filter li:eq(0) a").trigger("click");
-                        }, 500);
-                    });
-                }
-            });
-        });
-
-        $window.load(function () {
-            $(".portfolio-slider-alt").flexslider({
-                animation: "slide",
-                direction: "horizontal",
-                slideshowSpeed: 4000,
-                start: function () {
-                    imagesLoaded($(".portfolio"), function () {
-                        setTimeout(function () {
-                            $(".portfolio-filter li:eq(0) a").trigger("click");
-                        }, 500);
-                    });
-                }
-            });
-        });
-
-        $window.load(function () {
-            $(".post-slider-thumb").flexslider({
-                animation: "slide",
-                controlNav: "thumbnails"
-            });
-        });
-
-        $window.load(function () {
-            $(".post-slider").flexslider({
-                animation: "slide"
-                //slideshow: false
-            });
-        });
-
-        $window.load(function () {
-            $(".news-slider").flexslider({
-                animation: "slide",
-                slideshowSpeed: 3000
-            });
-        });
+//        $window.load(function () {
+//            $(".portfolio-slider").flexslider({
+//                animation: "slide",
+//                direction: "vertical",
+//                slideshowSpeed: 3000,
+//                start: function () {
+//                    imagesLoaded($(".portfolio"), function () {
+//                        setTimeout(function () {
+//                            $(".portfolio-filter li:eq(0) a").trigger("click");
+//                        }, 500);
+//                    });
+//                }
+//            });
+//        });
+//
+//        $window.load(function () {
+//            $(".portfolio-slider-alt").flexslider({
+//                animation: "slide",
+//                direction: "horizontal",
+//                slideshowSpeed: 4000,
+//                start: function () {
+//                    imagesLoaded($(".portfolio"), function () {
+//                        setTimeout(function () {
+//                            $(".portfolio-filter li:eq(0) a").trigger("click");
+//                        }, 500);
+//                    });
+//                }
+//            });
+//        });
+//
+//        $window.load(function () {
+//            $(".post-slider-thumb").flexslider({
+//                animation: "slide",
+//                controlNav: "thumbnails"
+//            });
+//        });
+//
+//        $window.load(function () {
+//            $(".post-slider").flexslider({
+//                animation: "slide"
+//                //slideshow: false
+//            });
+//        });
+//
+//        $window.load(function () {
+//            $(".news-slider").flexslider({
+//                animation: "slide",
+//                slideshowSpeed: 3000
+//            });
+//        });
 
 
         /*==============================================

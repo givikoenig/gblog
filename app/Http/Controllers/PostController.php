@@ -25,6 +25,7 @@ class PostController extends Controller {
     protected $title;
     protected $image;
     protected $desc;
+//    protected $og;
     
     public function __construct(WidgetRepository $w_rep, PblRepository $p_rep) {
         $this->w_rep = $w_rep;
@@ -39,6 +40,7 @@ class PostController extends Controller {
         $this->keywords = 'GiviK blog';
         $this->image = 'https://givik.ru/assets/img/posts/photo_7830_20081101.jpg';
         $this->desc = 'GiViK IT:SYS:WEB:PRO v.1.0';
+//        $this->og = '';
     }
   
     /**
@@ -143,7 +145,9 @@ class PostController extends Controller {
         $this->title = $post->title;
         $this->meta_desc = $post->meta_desc;
         $this->keywords = $post->keywords;
-
+        $this->desc = $post->desc;
+        $this->image = $post->img;
+        
         $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->desc);
 
         $og = new OpenGraph();
@@ -153,6 +157,8 @@ class PostController extends Controller {
             ->image( asset('assets') . '/img/post/' . $post->img)
             ->description($post->desc)
             ->url();
+//         $this->og = $og;
+//        dd($og->renderTags());
 
         /** ===== массив для постов типа gallery ========= */ 
         $slides = $post->img_slide;
@@ -266,11 +272,9 @@ class PostController extends Controller {
     }
 
      public function mail()
-        {
-//           $name = 'Krunal';
+     {
         Mail::to('ivan@enet.ru')->send(new ViewHero());
-
            return 'Email was sent';
-        }
+     }
     
 }

@@ -23,12 +23,11 @@ class ProfileController extends Controller
 	}
 
     public function profile(){
-
         $this->title = FALSE;
         $this->meta_desc = FALSE;
         $this->keywords = FALSE;
 
-    	/** ==== массив коллекций всех тегов модели Post   ======*/
+        /** ==== массив коллекций всех тегов модели Post   ======*/
         $alltags = $this->w_rep->getAllTags();
         /** ==== end Of массив коллекций всех тегов модели Post   ======*/
         /** ===== данные для раздела "Последние статьи" сайдбара ===== */
@@ -38,30 +37,25 @@ class ProfileController extends Controller
         $lastcomments = $this->w_rep->getLastComments();
         /** ==== End Of массив коллекций всех комментариев к постам ======*/
 
-
     	if (Auth::check()) {
 
-
-
             $user = Auth::user();
-
             $this->title = 'Профиль ' . $user->name;
-
             $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords);
-
             $likescount = DB::table('laravellikecomment_likes')->where('user_id', $user->id)->count();
             $commentscount = DB::table('laravellikecomment_comments')->where('user_id', $user->id)->count();
-        	return view('users.profile', $data, [
-        		'user' => $user,
-        		'alltags' => $alltags,
-        		'lasts' => $lasts,
+
+            return view('users.profile', $data, [
+                'user' => $user,
+                'alltags' => $alltags,
+                'lasts' => $lasts,
                 'lastcomments' => $lastcomments,
                 'likescount' => $likescount,
-        		'commentscount' => $commentscount,
-        	]);
-
-        }
-        abort(401);
+                'commentscount' => $commentscount,
+            ]);
+        } 
+        return redirect()->route('login');
+//      abort(401);
     }
 
     public function update_profile(Request $request) {
@@ -69,19 +63,13 @@ class ProfileController extends Controller
 
     		$avatar = $request->file('avatar');
     		$filename = $avatar->getClientOriginalName(); // time() . '.' . $avatar->getClientOriginalExtension();
-            // dd(basePath());
     		Image::make($avatar)->fit(292,188)->save( public_path() . '/assets/img/post/' . $filename );
     		$user = Auth::user();
 
     		User::where('id', $user->id)->update(['avatar' => $filename]);
-
-    		// return view('users.profile', array('user' => Auth::user()) );
     		Session::flash('message', "Данные успешно сохранены!");
     		return redirect()->back();
-
-
     	}
     }
-
 
 }

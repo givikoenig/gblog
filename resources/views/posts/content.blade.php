@@ -28,11 +28,13 @@
                         <div class="heading-title-alt text-left heading-border-bottom">
                             <h6 class="text-uppercase">Теги</h6>
                         </div>
-                        <div class="widget-tags">
+                        <div class="widget-tags flex-container">
                             <a href="{{ route('home') }}">Все</a>
                             @foreach ($alltags as $tag)
-                            @if($tag->posts->count()) 
-                            <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
+                            @if($tag->posts->count())
+                            <div class="flex-element">
+                                <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
+                            </div>
                             @endif
                             @endforeach
                         </div>
@@ -130,9 +132,12 @@
                             <h4 class="xs-m-top"><a href="{{ route('posts.show', $post->alias) }}">{{ $post->title }}</a></h4>
                             <p>{!! $post->desc !!}</p>
                             @elseif ( $post->posttype->name == 'video')
-                            <p class="video-fit m-bot-50">
+                            <div class="full-width">
+                            <a href="{{ route('posts.show', $post->alias) }}"><img src="{{ asset('assets') }}/img/post/{{ $post->img }}" alt="Image for Post '{{ $post->title }}'" /></a>
+                            <!--<p class="video-fit m-bot-50">
                                 <iframe width="560" height="315" src="{{ $post->videolink }}" allowfullscreen></iframe>
-                            </p>
+                            </p>-->
+                            </div>
                             <h4 class=""><a href="{{ route('posts.show', $post->alias) }}">{{ $post->title }}</a></h4>
                             <p>{!! $post->desc !!}</p>
                             @else
@@ -156,6 +161,9 @@
                     </div>
                     @endif
                     @endforeach
+<!--                    <button id="facebook" class="btn btn-raised btn-facebook sharrre">
+                        <i class="fa fa-facebook-square"></i> Share
+                      </button>-->
                     <!--pagination-->
                     <div class="text-center" id="custompagination">
                         {{ $posts->links() }}

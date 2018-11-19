@@ -23,12 +23,22 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    public function showLoginForm()
+    {
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
+        return view('auth.login');    
+    }
+    
     public function redirectTo()
     {
 
        $confirmed = User::where('email', $_POST['email'])->first()->confirmed;
        if($confirmed == 1) {
-            return  url('/');
+//            return  url('/');
+            return  url()->previous();
         } else {
             return url('/logout');
         }

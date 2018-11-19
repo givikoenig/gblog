@@ -2,10 +2,8 @@
 @section('header')
 @include('posts.header')
 @endsection
-
 @section('content')
 
-{{-- {!! $og->renderTags() !!} --}}
 <section class="body-content ">
     <div class="page-content">
         <div class="container">
@@ -29,11 +27,13 @@
                             <div class="heading-title-alt text-left heading-border-bottom">
                                 <h6 class="text-uppercase">Теги</h6>
                             </div>
-                            <div class="widget-tags">
+                            <div class="widget-tags flex-container">
                                 <a href="{{ route('home') }}">Все</a>
                                 @foreach ($alltags as $tag)
                                     @if($tag->posts->count()) 
-                                    <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
+                                    <div class="flex-element">
+                                        <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
+                                    </div>
                                     @endif
                                 @endforeach
                             </div>

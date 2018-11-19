@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">--> 
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- <meta name="author" content="Mosaddek"> --}}
-
+    
     <meta property="og:title" content="{{ $title or 'GIviK' }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ $image or 'https://givik.ru/assets/img/posts/photo_7830_20081101.jpg' }}" />
-    <meta property="og:description" content="{!! $desc or 'GiViK IT:SYS:WEB:PRO v.1.0' !!}" />
+    <meta property="og:image" content="{{ $image or '/img/posts/photo_7830_20081101.jpg' }}" />
+    <meta property="og:description" content="{{ $desc or 'GiViK IT:SYS:WEB:PRO v.1.0' }} "/>
     <meta property="og:url" content="{{ url()->current() }}" />
 
     <!--favicon icon-->
@@ -121,6 +121,7 @@
 
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <!--<script src="{{ asset('assets/js/jquery.sharrre.js') }}"></script>-->
     
 
     <!-- laravel-like-comment -->
@@ -130,7 +131,6 @@
 
 <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="//yastatic.net/share2/share.js"></script>
-
 </body>
  <!--script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script-->
 <!-- production-версия, оптимизированная для размера и скорости-->

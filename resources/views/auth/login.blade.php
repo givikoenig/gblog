@@ -46,6 +46,9 @@
                         <label for="checkbox1">Запомнить меня</label>
                         <a class="pull-right" data-toggle="modal" href="{{ route('password.request') }}"> Забыли пароль?</a>
                     </div>
+                    <div class="form-group">
+                        <a class="pull-right" data-toggle="modal" href="{{ route('register') }}"> Еще не зарегистрированы?</a>
+                    </div>
                 </form>
             </div>
             <div class="copyright-row text-center dark-txt">

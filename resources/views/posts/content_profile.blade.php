@@ -23,12 +23,14 @@
                             <div class="heading-title-alt text-left heading-border-bottom">
                                 <h6 class="text-uppercase">Теги</h6>
                             </div>
-                            <div class="widget-tags">
+                            <div class="widget-tags flex-container">
                                 <a href="{{ route('home') }}">Все</a>
                                 @foreach ($alltags as $tag)
-                                    @if($tag->posts->count()) 
-                                    <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
-                                    @endif
+				    <div class="flex-element">
+                                	@if($tag->posts->count()) 
+                                    	    <a href="{{ route('posts.index', ['category' => $tag->id ]) }}" style="font-size: {{ 100 + $tag->posts->count() * 3 }}%; color: rgb({{ 131 - $tag->posts->count() * 2 }}, {{ 127 - $tag->posts->count() * 2 }}, {{126 - $tag->posts->count() * 2 }}); ">{{ $tag->name }}</a>
+                                	@endif
+				    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -97,30 +99,30 @@
                                 <p>Количество комментариев:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $commentscount ? $commentscount : 'Нет' }}</p>
                                 <p>Количество лайков:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $likescount ? $likescount : 'Нет' }}</p>
                             </div>
-							<div class="login-logo text-center">
-				                <a href="javascript: void(0)">
-				                	@if ( $user->avatar)
-				                    <img class="retina" src="{{asset('assets')}}/img/post/{{ $user->avatar }}" alt="" / style="width: 250px;">
-				                    @else
-				                    <img class="retina" src="{{asset('assets')}}/img/post/a1.png" alt="" / style="width: 100px;">
-				                    @endif
-				                </a>
-				            </div>
-							<div class="login-box btn-rounded slogin-bg-input border-less-input">
-								<form enctype="multipart/form-data" action="{{ route('update_profile') }}" method="POST">
-									{{ csrf_field() }}
-									<div class="form-group text-uppercase text-center">
-							        	<label >Обновить изображение профиля</label>
-							        </div>
-							        <div class="form-group text-uppercase text-center">
-							            <input type="file" name="avatar" style="margin-left: auto;margin-right: auto;" class="btn btn-small btn-dark-solid full-width btn-rounded">
-							        </div>
-							        <div class="form-group text-center">
-							            <input type="submit" class="btn btn-small btn-dark-solid full-width btn-rounded">
-							        </div>	
-							    </form>
-							</div>
-						</div>
+                            <div class="login-logo text-center">
+				<a data-fancybox="images" data-caption="Аватар пользователя {{ $user->name }}  " href="{{asset('assets')}}/img/post/{{ $user->avatar }}">
+				    @if ( $user->avatar)
+				        <img class="retina" src="{{asset('assets')}}/img/post/{{ $user->avatar }}" alt="">
+				    @else
+				        <img class="retina" src="{{asset('assets')}}/img/post/a1.png" alt="" style="width: 100px;">
+				    @endif
+				</a>
+                            </div>
+                            <div class="login-box btn-rounded slogin-bg-input border-less-input">
+				<form enctype="multipart/form-data" action="{{ route('update_profile') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <div class="form-group text-uppercase text-center">
+                                        <label >Обновить изображение профиля</label>
+                                    </div>
+                                    <div class="form-group text-uppercase text-center">
+                                        <input type="file" name="avatar" style="margin-left: auto;margin-right: auto;" class="btn btn-small btn-dark-solid full-width btn-rounded">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <input type="submit" class="btn btn-small btn-dark-solid full-width btn-rounded">
+                                    </div>	
+                                </form>
+                            </div>
+			</div>
                     </div>
             </div>
         </div>

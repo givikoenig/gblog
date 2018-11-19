@@ -1,14 +1,27 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <h5>Chart.js. Линейный график в компоненте VUE</h5>
-                <div class="col-sm-12">
-                    <line-chart :chart-data="data" :height="100" :options="{responsive: true, maintainAspectRatio: true}"></line-chart>
-                    <input type="checkbox" v-model="realtime"> realtime
-                    <input type="text" v-model="label">
-                    <input type="text" v-model="sale">
-                    <button @click="sendData" class="btn btn-primary btn-xs text mt-1 mh-100">Обновить</button>
+    <div class="chartwrap">
+        <div class="charttitle">
+            <h5 v-if="id == 10"> Admin panel</h5>
+            <h5 v-else> User browser</h5>
+        </div>
+        <div class="row">
+            <line-chart :chart-data="data" :height="100" :options="{responsive: true, maintainAspectRatio: true}"></line-chart>
+        </div>
+        <div class="row">
+            <div class="form-group"  v-if="id == 10">
+                <div class="col-sm-2 checkbox">
+                    <label  class="rt-check">
+                        <input type="checkbox" v-model="realtime"> RealTime
+                    </label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" v-model="label" placeholder="Добавьте месяц" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" v-model="sale" placeholder="Введите данные" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <button @click="sendData" class="btn btn-extra-small btn-dark-solid  btn-transparent">Обновить</button>
                 </div>
             </div>
         </div>
@@ -26,7 +39,8 @@
                 data: [],
                 realtime: false,
                 label: "",
-                sale: 500
+                sale: null,
+                id: 10
             };
         },
         mounted() {
@@ -35,6 +49,7 @@
             socket.on("news-action:App\\Events\\NewEvent", function(data) {
                 app.data = data.result;
             });
+            this.id = this._uid;
             this.update();
         },
         methods: {
@@ -56,3 +71,20 @@
         }
     }
 </script>
+
+<style>
+    .rt-check {
+      color: #999;
+    }
+    .chartwrap {
+        margin: 5rem 0;
+        border: solid 1px #cecece;
+        border-radius: 5px;
+    }
+    .chartwrap .row {
+      padding: 30px;
+    }
+    .charttitle {
+            text-align: center;
+    }
+</style>
