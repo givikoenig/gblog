@@ -30,6 +30,7 @@ Vue.component('socket-private-component', require('./components/SocketPrivateCom
 Vue.component('headersearch-component', require('./components/HeaderSearchComponent.vue'));
 Vue.component('daterange-picker-component', require('./components/DateRangePickerComponent.vue'));
 Vue.component('ipcalc-component', require('./components/IpcalcComponent.vue'));
+Vue.component('color-component', require('./components/ColorpickerComponent.vue'));
 
 var prop = new Vue ({
     el: '#prop'
@@ -77,6 +78,10 @@ var chat = new Vue({
 
 var ipcalc = new Vue({
     el: '#ipcalc'
+});
+
+var color = new Vue({
+    el: '#color'
 });
 
 const app = new Vue({

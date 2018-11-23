@@ -11,6 +11,7 @@
     "start": "node server.js"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "axios": "^0.17",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.1",
@@ -28,6 +29,7 @@
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
     "vue-chartjs": "^3.4.0",
+    "vue-color": "^2.7.0",
     "vue-debounce": "^0.2.0",
     "vue-ip": "^1.0.3",
     "vue2-daterange-picker": "^0.1.5"

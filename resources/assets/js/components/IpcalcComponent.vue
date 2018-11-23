@@ -1,15 +1,15 @@
 <template>
-<div class="wrap">
-    <div class="row mb-3"> 
+<div class="wrap mb-5">
+    <div class="row mb-5"> 
         <div class=" flex-container sendquery" >
-            <div class="col-sm-3">
+            <div class="fl-inner">
                 <div class="form-group">
                     <label for="ipAdres" class="bmd-label-floating">IP-адрес:</label>
                     <vue-ip class="form-control" :ip="ipAddress" :on-change="change" theme="material" id="ipAdres" v-model="ipAddress"></vue-ip>
                     <!-- <input type="text" class="form-control" id="ipAdres" v-model="ipAddress"> -->
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="fl-inner">
                 <div class="form-group">
                     <label for="networkMask" >Маска:</label>
                     <select class="form-control select" id="networkMask" v-model="bitMask">
@@ -17,8 +17,8 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <button @click="sendQuery" class="btn btn-success flex-element">Подсчитать</button>
+            <div class="fl-inner">
+                <button @click="sendQuery" class="btn btn-small btn-dark-solid  btn-transparent flex-element">Подсчитать</button>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="col-sm-3">
             <span>{{ip}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ ipbin.substr(0,8) + '.' + ipbin.substr(8,8) + '.' + ipbin.substr(16,8) + '.' + ipbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -40,9 +40,9 @@
             <span>Netmask:</span>
         </div>
         <div class="col-sm-3">
-            <span>{{netmask + '&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;' + bitMask}}</span>
+            <span>{{netmask + '&nbsp;&nbsp;=&nbsp;&nbsp;' + bitMask}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ netmaskbin.substr(0,8) + '.' + netmaskbin.substr(8,8) + '.' + netmaskbin.substr(16,8) + '.' + netmaskbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -53,7 +53,7 @@
         <div class="col-sm-3">
             <span>{{wildcard}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ wildcardbin.substr(0,8) + '.' + wildcardbin.substr(8,8) + '.' + wildcardbin.substr(16,8) + '.' + wildcardbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="col-sm-3">
             <span>{{network + '/' + bitMask}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ networkbin.substr(0,8) + '.' + networkbin.substr(8,8) + '.' + networkbin.substr(16,8) + '.' + networkbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -83,7 +83,7 @@
         <div class="col-sm-3">
             <span>{{hostmin}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ hostminbin.substr(0,8) + '.' + hostminbin.substr(8,8) + '.' + hostminbin.substr(16,8) + '.' + hostminbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -94,7 +94,7 @@
         <div class="col-sm-3">
             <span>{{hostmax}}</span>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <span>{{ hostmaxbin.substr(0,8) + '.' + hostmaxbin.substr(8,8) + '.' + hostmaxbin.substr(16,8) + '.' + hostmaxbin.substr(24,8) }}</span>
         </div>
     </div>
@@ -172,14 +172,14 @@ export default {
                 {mask: '255.255.255.248', bit: 29},
                 {mask: '255.255.255.252', bit: 30},
                 {mask: '255.255.255.254', bit: 31},
-                {mask: '255.255.255.255', bit: 32},
+                {mask: '255.255.255.255', bit: 32}
             ],
             ipAddress: '',
-            bitMask: '', //24,
-        }
+            bitMask: '' //24,
+        };
     },
     mounted() {
-        this.update()
+        this.update();
     },
     methods: {
         change(ip, valid) {
@@ -188,24 +188,24 @@ export default {
         },
         update() {
             axios.get('/ip-calculate').then((response) => {
-                    this.data = response.data
-                    this.ipAddress = response.data.ipAddress
-                    this.bitMask = response.data.bitMask
-                    this.ip = response.data.ip
-                    this.ipbin = response.data.ipbinary
-                    this.netmask = response.data.netmask
-                    this.netmaskbin = response.data.netmaskbin
-                    this.wildcard = response.data.wildcard
-                    this.wildcardbin = response.data.wildcardbin
-                    this.network = response.data.network
-                    this.networkbin = response.data.networkbin
-                    this.broadcast = response.data.broadcast
-                    this.hostmin = response.data.hostmin
-                    this.hostminbin = response.data.hostminbin
-                    this.hostmax = response.data.hostmax
-                    this.hostmaxbin = response.data.hostmaxbin
-                    this.ipsnumber = response.data.ipsnumber
-                    this.hostsnumber = response.data.hostsnumber
+                    this.data = response.data;
+                    this.ipAddress = response.data.ipAddress;
+                    this.bitMask = response.data.bitMask;
+                    this.ip = response.data.ip;
+                    this.ipbin = response.data.ipbinary;
+                    this.netmask = response.data.netmask;
+                    this.netmaskbin = response.data.netmaskbin;
+                    this.wildcard = response.data.wildcard;
+                    this.wildcardbin = response.data.wildcardbin;
+                    this.network = response.data.network;
+                    this.networkbin = response.data.networkbin;
+                    this.broadcast = response.data.broadcast;
+                    this.hostmin = response.data.hostmin;
+                    this.hostminbin = response.data.hostminbin;
+                    this.hostmax = response.data.hostmax;
+                    this.hostmaxbin = response.data.hostmaxbin;
+                    this.ipsnumber = response.data.ipsnumber;
+                    this.hostsnumber = response.data.hostsnumber;
                 });
         },
         sendQuery() {
@@ -214,30 +214,28 @@ export default {
                     url: '/ip-calculate',
                     params: {ipAddress: this.ipAddress, bitMask: this.bitMask}
                 }).then((response) => {
-                    this.data = response.data
-                    this.ipAddress = response.data.ipAddress
-                    this.bitMask = response.data.bitMask
-                    this.ip = response.data.ip
-                    this.ipbin = response.data.ipbinary
-                    this.netmask = response.data.netmask
-                    this.netmaskbin = response.data.netmaskbin
-                    this.wildcard = response.data.wildcard
-                    this.wildcardbin = response.data.wildcardbin
-                    this.network = response.data.network
-                    this.networkbin = response.data.networkbin
-                    this.broadcast = response.data.broadcast
-                    this.hostmin = response.data.hostmin
-                    this.hostminbin = response.data.hostminbin
-                    this.hostmax = response.data.hostmax
-                    this.hostmaxbin = response.data.hostmaxbin
-                    this.ipsnumber = response.data.ipsnumber
-                    this.hostsnumber = response.data.hostsnumber
+                    this.data = response.data;
+                    this.ipAddress = response.data.ipAddress;
+                    this.bitMask = response.data.bitMask;
+                    this.ip = response.data.ip;
+                    this.ipbin = response.data.ipbinary;
+                    this.netmask = response.data.netmask;
+                    this.netmaskbin = response.data.netmaskbin;
+                    this.wildcard = response.data.wildcard;
+                    this.wildcardbin = response.data.wildcardbin;
+                    this.network = response.data.network;
+                    this.networkbin = response.data.networkbin;
+                    this.broadcast = response.data.broadcast;
+                    this.hostmin = response.data.hostmin;
+                    this.hostminbin = response.data.hostminbin;
+                    this.hostmax = response.data.hostmax;
+                    this.hostmaxbin = response.data.hostmaxbin;
+                    this.ipsnumber = response.data.ipsnumber;
+                    this.hostsnumber = response.data.hostsnumber;
                 });
         }
     }
 }
-
-
 
 </script>
 
@@ -255,4 +253,19 @@ export default {
     button {
             margin-top: 13px;
     }
+    .mb-5 {
+            margin-bottom: 20px;
+    }
+    .fl-inner {
+        margin-left: 10px;
+    }
+    .modal-dialog {
+        /*width: 100rem;*/
+        margin: 20rem auto;
+    }
+ @media screen and (max-width: 768px) {
+    .modal-dialog {
+        margin: 0 auto;
+    }
+}
 </style>

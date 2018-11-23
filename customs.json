@@ -8,6 +8,9 @@
             "context": "span"
         },
         "v-if": {},
+        "@click": {
+            "context": "button"
+        },
         "v-on:click": {},
         "v-bind:href": {
             "context": "a"

@@ -151,7 +151,7 @@ div.cart_result p {
     margin: 10% 0;
 }
 .ipcalcblock {
-    margin: 16% 0;
+    margin: 14% 0;
     padding: 0;
 }
 .ipcalcblock h3 {
@@ -295,7 +295,13 @@ div.cart_result p {
 .card-deck .card {
   margin-bottom: 15px;
 }
-  /**/
+.modal-title {
+   color: #FF5E5E;
+}
+.modal-body {
+    background: #FFF2DF;
+}
+/**/
   /**/
 
 @media screen and (max-width: 768px) {

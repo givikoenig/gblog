@@ -19,12 +19,8 @@
                         <li><a href="{{ route('home') }}">Главная</a></li>
                         <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
                     @endif
-                    <li><a href="javascript:void(0)">Причиндалы</a>
-                        <ul class="dropdown">
-                            <li><a href="{{ route('ipcalc') }}"><i class="fa fa-btn fa-calculator"></i>&nbsp;&nbsp;IP Калькулятор</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
+                    
+                    
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Вход</a></li>
                         <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
@@ -57,19 +53,15 @@
                             </ul>
                         </li>
                     @endif
-
                     <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
-                    
-                    <headersearch-component></headersearch-component>
-
-<!--                    <li>
-                        <a href="javascript:void(0)"><i class="fa fa-search"></i> Поиск</a>
-                        <div class="megamenu megamenu-quarter-width navbar-search">
-                            <form role="searchform" action="{{ route('home') }}">
-                                <input type="text" class="form-control" placeholder="Поиск статьи…" name="keyword">
-                            </form>
-                        </div>
-                    </li>-->
+                        <headersearch-component></headersearch-component>
+                    <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-btn fa-wrench"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#IPCalcModal" data-toggle="modal"><i class="fa fa-btn fa-calculator"></i>&nbsp;&nbsp;IP Калькулятор</a></li>
+                            <li><a href="#ColorPickerModal" data-toggle="modal"><i class="fa fa-btn fa-eyedropper"></i>&nbsp;&nbsp;Colorpicker</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <!--mega menu end-->
             </nav>

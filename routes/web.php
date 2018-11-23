@@ -17,8 +17,7 @@ Route::get('/posts/vue-laravel-realtime-charts', 'SocketController@index')->name
 
 Route::get('/socket-chart', 'SocketController@newEvent');
 
-Route::get('/ip-calculator', 'IpCalculateController@index')->name('ipcalc');
-Route::get('/ip-calculate', 'IpCalculateController@netData'); 
+Route::get('/ip-calculate', 'IpCalculateController@netData');
 
 Route::group(['midleware' => 'auth'], function() { 
     Route::get('/chat', ['uses' => 'ChatController@index', 'as' => 'chat', 'https' => false]);

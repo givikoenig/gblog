@@ -22,7 +22,7 @@
     <!--common style-->
     {{-- <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'> --}}
 
-    
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">-->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     
     <!-- inject:css -->
@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/owl-carousel/owl.theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/fontawesome.min.css') }}">-->
     <link rel="stylesheet" href="{{ asset('assets/css/shortcodes.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
@@ -59,7 +60,9 @@
 </head>
 
 <body>
-
+    
+    @include('posts.modals')
+    
     <!--  preloader start -->
     <div id="tb-preloader">
         <div class="tb-preloader-wave"></div>
@@ -67,7 +70,8 @@
     <!-- preloader end -->
    
     <div class="wrapper">
-
+        
+        
         <!--top bar-->
         @yield('topbar')
         <!--top bar-->

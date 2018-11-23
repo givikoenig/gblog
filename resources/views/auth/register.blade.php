@@ -14,9 +14,10 @@
                     <div class="text-center">
                         <h3>РЕГИСТРАЦИЯ</h3>
                     </div>
+                    <input class="text" name="honey_pot" style="display: none">
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control" placeholder="Имя пользователя">
-                        @if ($errors->has('тфьу'))
+                        @if ($errors->has('name'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
                             </span>
