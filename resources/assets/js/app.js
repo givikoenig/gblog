@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueMaterial from "vue-material";
+Vue.use(VueMaterial);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -31,6 +34,8 @@ Vue.component('headersearch-component', require('./components/HeaderSearchCompon
 Vue.component('daterange-picker-component', require('./components/DateRangePickerComponent.vue'));
 Vue.component('ipcalc-component', require('./components/IpcalcComponent.vue'));
 Vue.component('color-component', require('./components/ColorpickerComponent.vue'));
+Vue.component('vplayer-component', require('./components/VplayerComponent.vue'));
+Vue.component('vplayer2-component', require('./components/Vplayer2Component.vue'));
 
 var prop = new Vue ({
     el: '#prop'
@@ -82,6 +87,10 @@ var ipcalc = new Vue({
 
 var color = new Vue({
     el: '#color'
+});
+
+var vplayer = new Vue({
+    el: '#vplayer'
 });
 
 const app = new Vue({

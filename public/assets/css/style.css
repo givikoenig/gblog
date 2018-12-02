@@ -770,6 +770,7 @@ pre {
     letter-spacing: .5px;
     text-transform: uppercase;
     background: none;
+    
 }
 
 .logo-brand {
@@ -1126,6 +1127,9 @@ pre {
 
 .navbar-search .form-control {
     border-radius: 0;
+}
+.l-navbar {
+    z-index: 1000!important;
 }
 
 @media (max-width: 768px) {

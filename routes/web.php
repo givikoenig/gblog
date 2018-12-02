@@ -19,6 +19,8 @@ Route::get('/socket-chart', 'SocketController@newEvent');
 
 Route::get('/ip-calculate', 'IpCalculateController@netData');
 
+Route::get('/player', function () {return view('posts.player');} )->name('player');
+
 Route::group(['midleware' => 'auth'], function() { 
     Route::get('/chat', ['uses' => 'ChatController@index', 'as' => 'chat', 'https' => false]);
     Route::get('/send-message', ['uses' => 'ChatController@sendMessage', 'https' => false]);

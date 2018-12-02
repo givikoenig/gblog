@@ -3,10 +3,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title"><i class="fa fa-btn fa-eyedropper"></i> VUE Color Picker</h4>
+                <h4 class="modal-title"><i class="fa fa-btn fa-eyedropper"></i> СЕЛЕКТОР ЦВЕТА</h4>
             </div>
             <div class="modal-body">
-                <div class="scontainer" id="color">
+                <div id="color">
                     <div class="srow">
                         <color-component></color-component>
                     </div>
@@ -25,7 +25,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title"><i class="fa fa-btn fa-calculator"></i> VUE IP Calculator</h4>
+                <h4 class="modal-title"><i class="fa fa-btn fa-calculator"></i> IP КАЛЬКУЛЯТОР</h4>
             </div>
             <div class="modal-body">
                 <div class="scontainer" id="ipcalc">

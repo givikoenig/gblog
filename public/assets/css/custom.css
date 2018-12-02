@@ -299,8 +299,10 @@ div.cart_result p {
    color: #FF5E5E;
 }
 .modal-body {
-    background: #FFF2DF;
+    /*background: #FFF2DF;*/
+    background: #F9FFF2;
 }
+
 /**/
   /**/
 
@@ -322,7 +324,6 @@ div.cart_result p {
 		visibility: hidden;
 		padding: 0;
 	}
-
 }
 
 @media screen and (max-width: 480px) {

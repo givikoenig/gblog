@@ -22,7 +22,7 @@ class IpCalculateController extends Controller
         }
         $result = [
             'ipAddress' => $ip, //'192.168.100.11',
-            'bitMask' => '24',
+            'bitMask' => '32',
         ];
         if ($request->has('ipAddress')) {
             $result['ipAddress'] = $request->input('ipAddress');
