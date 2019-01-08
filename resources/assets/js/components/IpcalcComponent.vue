@@ -184,7 +184,7 @@ export default {
     methods: {
         change(ip, valid) {
             this.ipAddress = ip;
-            console.log(ip, valid);
+//            console.log(ip, valid);
         },
         update() {
             axios.get('/ip-calculate').then((response) => {

@@ -1,85 +1,186 @@
 <template>
-  <md-card class="md-theme-default">
-    <md-card-actions>
-      <div class="md-subhead">
-        <span>HLS Live / 直播</span>
-      </div>
-      <md-button class="md-icon-button"
-                 target="_blank"
-                 title="code"
-                 href="https://github.com/surmon-china/vue-video-player/tree/master/examples/04-video.vue">
-          <md-icon><i class="fa fa-code"></i></md-icon>
-      </md-button>
-    </md-card-actions>
-    <md-card-media>
-      <div class="item">
-        <div class="player">
-          <video-player class="vjs-custom-skin" 
-                        :options="playerOptions" 
-                        @ready="playerReadied">
-          </video-player>
-        </div>
-      </div>
-    </md-card-media>
-  </md-card>
+    <md-card>
+        <md-card-actions>
+            <div class="md-subhead">
+                <span>Base Config / 基本示例</span>
+            </div>
+            <md-button class="md-icon-button"
+                       target="_blank"
+                       title="code"
+                       href="https://github.com/surmon-china/vue-video-player/tree/master/examples/01-video.vue">
+                <md-icon><i class="fa fa-code"></i></md-icon>
+            </md-button>
+        </md-card-actions>
+        <md-card-media>
+            <div class="item">
+                <div class="player">
+                    <video-player  class="vjs-custom-skin"
+                                   ref="videoPlayer"
+                                   :options="playerOptions"
+                                   :playsinline="true"
+                                   @play="onPlayerPlay($event)"
+                                   @pause="onPlayerPause($event)"
+                                   @ended="onPlayerEnded($event)"
+                                   @loadeddata="onPlayerLoadeddata($event)"
+                                   @waiting="onPlayerWaiting($event)"
+                                   @playing="onPlayerPlaying($event)"
+                                   @timeupdate="onPlayerTimeupdate($event)"
+                                   @canplay="onPlayerCanplay($event)"
+                                   @canplaythrough="onPlayerCanplaythrough($event)"
+                                   @ready="playerReadied"
+                                   @statechanged="playerStateChanged($event)">
+                    </video-player>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class=" flex-container sendquery" >
+                    <div class="fl-inner">
+                        <div class="form-group srow">
+                            <select class="form-control select" id="videoSrc" v-model="videoSource">
+                                <option value="" selected disabled>Select source…</option>
+                                <option v-for="option in selectOptions" :value="option">{{ option.descr }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fl-inner">
+                        <button @click="sendQuery" class="btn btn-small btn-dark-solid  btn-transparent sflex-element">Выбрать</button>
+                    </div>
+                </div>
+            </div>
+        </md-card-media>
+    </md-card>
 </template>
 
-
 <script>
-import { videoPlayer } from 'vue-video-player'
+    import { videoPlayer } from 'vue-video-player'
+    import 'vue-video-player/src/custom-theme.css'
 
-import 'vue-video-player/src/custom-theme.css'
+    // videojs
+    import videojs from 'video.js'
+    import 'video.js/dist/video-js.css'
+    window.videojs = videojs;
 
-// videojs
-  import videojs from 'video.js'
-  import 'video.js/dist/video-js.css'
-  window.videojs = videojs;
-  // hls plugin for videojs6
-  require('videojs-contrib-hls/dist/videojs-contrib-hls.js');
+    // hls plugin for videojs
+    require('videojs-contrib-hls/dist/videojs-contrib-hls.js');
 
-export default {
-  components: {
-    videoPlayer
-  },
-  data() {
-      return {
-        playerOptions: {
-          // videojs and plugin options
-          height: '360',
-          language: 'ru',
-          sources: [{
-            withCredentials: false,
-            type: "application/x-mpegURL",
-//            src: "https://logos-channel.scaleengine.net/logos-channel/live/biblescreen-ad-free/playlist.m3u8" // Live
-//            src: "http://givik.ru/assets/m/unicast-playlist.m3u" // no
-//            src: "http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8" // 2:21
-            src: "http://rtmp.api.rt.com/hls/rtdru.m3u8" // RT Doc live
-//            src: "http://online.video.rbc.ru/online/rbctv_480p/index.m3u8" // RBC live
-//               src: "http://stream.kuvalda.tv/hls/5kanal.m3u8"
+    export default {
+        components: {
+            videoPlayer
+        },
+        data() {
+            return {
+                selectOptions: [],
+                videoSource: '',
+                // videojs options
+                playerOptions: {
+                    height: '448',
+                    autoplay: false,
+                    muted: true,
+                    language: 'ru',
+                    playbackRates: [0.7, 1.0, 1.5, 2.0],
+                    sources: [{
+                        type: "video/mp4",
+                        src: "http://vjs.zencdn.net/v/oceans.mp4"
+                    }],
+                    poster: "https://givik.ru/assets/img/post/oceans.jpg" ,
+                    controlBar: {
+                        timeDivider: false,
+                        durationDisplay: false
+                    },
+                    flash: { hls: { withCredentials: false }},
+                    html5: { hls: { withCredentials: false }}
+                }
+            };
+        },
+        mounted() {
+            this.update();
+//       console.log('this is current player instance object', this.player)
+            setTimeout(() => {
+                this.player.muted(false);
+            }, 5000);
+        },
+        computed: {
+            player() {
+                return this.$refs.videoPlayer.player;
+            }
+        },
+        methods: {
+            update() {
+                axios.get('/get-playlist').then((response) => {
+                    this.selectOptions = response.data;
+                });
+            },
+            sendQuery() {
+                console.log(this.videoSource.poster + ' -> ' + this.videoSource.type + ' -> ' + this.videoSource.src +  ' -> ' + this.videoSource.descr);
+                this.playerOptions.sources = [{
+                    type: this.videoSource.type,
+                    src: this.videoSource.src
 
-//          type: "video/mp4",
-//          src: "http://vjs.zencdn.net/v/oceans.mp4"
-          }],
-          controlBar: {
-            timeDivider: false,
-            durationDisplay: false
-          },
-          flash: { hls: { withCredentials: false }},
-          html5: { hls: { withCredentials: false }},
-//          poster: "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-5.jpg"
-            poster: "https://givik.ru/assets/img/post/p12.jpg" //photo_7830_20081101.jpg"
+                }];
+                this.playerOptions.poster = this.videoSource.poster;
+                setTimeout(() => {
+                    this.player.muted(false);
+                }, 2000);
+            },
+            // listen event
+            onPlayerPlay(player) {
+                // console.log('player play!', player)
+            },
+            onPlayerPause(player) {
+                // console.log('player pause!', player)
+            },
+            onPlayerEnded(player) {
+                // console.log('player ended!', player)
+            },
+            onPlayerLoadeddata(player) {
+                // console.log('player Loadeddata!', player)
+            },
+            onPlayerWaiting(player) {
+                // console.log('player Waiting!', player)
+            },
+            onPlayerPlaying(player) {
+                // console.log('player Playing!', player)
+            },
+            onPlayerTimeupdate(player) {
+                // console.log('player Timeupdate!', player.currentTime())
+            },
+            onPlayerCanplay(player) {
+                // console.log('player Canplay!', player)
+            },
+            onPlayerCanplaythrough(player) {
+                // console.log('player Canplaythrough!', player)
+            },
+            // or listen state event
+            playerStateChanged(playerCurrentState) {
+                // console.log('player current update state', playerCurrentState)
+            },
+            // player is ready
+            playerReadied(player) {
+                // seek to 10s
+//        console.log('example player 1 readied', player)
+//        player.currentTime(10)
+                // console.log('example 01: the player is readied', player)
+            }
         }
-      };
-    },
-    methods: {
-      playerReadied(player) {
-        var hls = player.tech({ IWillNotUseThisInPlugins: true }).hls;
-        player.tech_.hls.xhr.beforeRequest = function(options) {
-          // console.log(options)
-          return options;
-        };
-      }
     }
-}
 
 </script>
+
+<style>
+    #videoSrc {
+        width: 25rem;
+    }
+    .sendquery {
+        justify-content: center;
+        align-items: center;
+    }
+    .fl-inner button {
+        margin-top: -19px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .fl-inner {
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+</style>

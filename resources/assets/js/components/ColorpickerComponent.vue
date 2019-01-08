@@ -16,7 +16,6 @@
 </template>
 
 <script>
-//import Photoshop from 'vue-color'
 var VueColor = require('vue-color');
 var colors = {
     hex: '#C3DFA4',

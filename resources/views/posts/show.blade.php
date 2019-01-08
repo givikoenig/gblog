@@ -158,7 +158,7 @@
                                         </li>
                                     </ul>
                                     @if ( $post->posttype->name != 'quote' )
-                                    <p>{!! $post->desc !!}</p>
+                                        {!! $post->desc !!}
                                     @else
                                     <div class="blog-post">
                                         <blockquote class="quote-post">

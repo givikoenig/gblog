@@ -29,7 +29,7 @@
 @endsection
 
 @section('content')
-<!--<div id="prop"></div>
+<div id="prop"></div>
 <div id="example"></div>
 <div id="mesg"></div>
 <div id="vbind"></div>
@@ -38,7 +38,10 @@
 <div id="von"></div>
 <div id="vmodel"></div>
 <div id="vspinner"></div>
-<div id="app"></div>-->
+<div id="socket"></div>
+<div id="chat"></div>
+<div id="vplayer"></div>
+<div id="app"></div>
 	@include('posts.content')
 @endsection
 

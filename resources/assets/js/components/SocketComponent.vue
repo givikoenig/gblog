@@ -1,14 +1,14 @@
 <template>
     <div class="chartwrap">
         <div class="charttitle">
-            <h5 v-if="id == 10"> Admin panel</h5>
+            <h5 v-if="id == 11"> Admin panel</h5>
             <h5 v-else> User browser</h5>
         </div>
         <div class="row">
             <line-chart :chart-data="data" :height="100" :options="{responsive: true, maintainAspectRatio: true}"></line-chart>
         </div>
         <div class="row">
-            <div class="form-group"  v-if="id == 10">
+            <div class="form-group"  v-if="id == 11">
                 <div class="col-sm-2 checkbox">
                     <label  class="rt-check">
                         <input type="checkbox" v-model="realtime"> RealTime
@@ -40,7 +40,7 @@
                 realtime: false,
                 label: "",
                 sale: null,
-                id: 10
+                id: 11
             };
         },
         mounted() {

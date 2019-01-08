@@ -25,6 +25,7 @@ class PostController extends Controller {
     protected $title;
     protected $image;
     protected $desc;
+    protected $og;
 //    protected $og;
     
     public function __construct(WidgetRepository $w_rep, PblRepository $p_rep) {
@@ -38,9 +39,9 @@ class PostController extends Controller {
         $this->title = config('app.name');
         $this->meta_desc = 'GiviK blog';
         $this->keywords = 'GiviK blog';
-        $this->image = 'https://givik.ru/assets/img/posts/photo_7830_20081101.jpg';
-        $this->desc = 'GiViK IT:SYS:WEB:PRO v.1.0';
-//        $this->og = '';
+        $this->image = asset('assets').'/img/post/tearsofsteel.jpg';
+        $this->description = 'GiViK IT:SYS:WEB:PRO v.1.0';
+        $this->og = '';
     }
   
     /**
@@ -49,43 +50,45 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->desc);
+        $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->description);
         if (view()->exists('posts.index')) {
             $category = $request['category'];
             $keyword = Input::get('keyword', '');
-        if(isset($category)) {
-             $posts = Tag::find($category)->posts()->orderBy('created_at', 'desc')->paginate(4);
-        } else {
-            if ($keyword) {
-             $posts = Post::SearchByKeyword($keyword)->paginate(4);
+            if(isset($category)) {
+                 $posts = Tag::find($category)->posts()->orderBy('created_at', 'desc')->paginate(4);
             } else {
-                $posts = Post::orderBy('created_at', 'desc')->paginate(4);
+                if ($keyword) {
+                 $posts = Post::SearchByKeyword($keyword)->paginate(4);
+                } else {
+                    $posts = Post::orderBy('created_at', 'desc')->paginate(4);
+                }
             }
-        }
-        /** ===== массив для постов типа gallery ========= */ 
-        $slides = [];
-        foreach ($posts as $item) {
-            $slides[$item->id] = $item->img_slide;
-        }
-        /** ===== End of массив для постов типа gallery ===== */
-        /** ===== данные для раздела "Обо мне" сайдбара ===== */
-        $abouts = About::where('active', 1)->get();
-        /** ===== End Of данные для раздела "Обо мне" сайдбара ===== */
-        /** ==== массив коллекций тегов для каждой из статей  ======*/
-        $tags = [];
-        foreach ($posts as $post) {
-            $tmp = $post->tags;
-            array_push($tags, $tmp);
-        }
-        /** ==== End Of массив коллекций тегов ======*/
-        return view('posts.index', $data,  [
-            'posts' => $posts,
-            'slides' => $slides,
-            'abouts' => $abouts,
-            'tags' => $tags,
-            'lasts' => $this->lastposts,
-            'alltags' => $this->alltags,
-            'lastcomments' => $this->lastcomments,
+//            $posts_array = $posts->toArray();
+    //        dd($posts_array['data'][0]['title']);
+            /** ===== массив для постов типа gallery ========= */ 
+            $slides = [];
+            foreach ($posts as $item) {
+                $slides[$item->id] = $item->img_slide;
+            }
+            /** ===== End of массив для постов типа gallery ===== */
+            /** ===== данные для раздела "Обо мне" сайдбара ===== */
+            $abouts = About::where('active', 1)->get();
+            /** ===== End Of данные для раздела "Обо мне" сайдбара ===== */
+            /** ==== массив коллекций тегов для каждой из статей  ======*/
+            $tags = [];
+            foreach ($posts as $post) {
+                $tmp = $post->tags;
+                array_push($tags, $tmp);
+            }
+            /** ==== End Of массив коллекций тегов ======*/
+            return view('posts.index', $data,  [
+                'posts' => $posts,
+                'slides' => $slides,
+                'abouts' => $abouts,
+                'tags' => $tags,
+                'lasts' => $this->lastposts,
+                'alltags' => $this->alltags,
+                'lastcomments' => $this->lastcomments,
             ]);
         }
         abort(404);
@@ -145,10 +148,10 @@ class PostController extends Controller {
         $this->title = $post->title;
         $this->meta_desc = $post->meta_desc;
         $this->keywords = $post->keywords;
-        $this->desc = $post->desc;
+        $this->description = $post->desc;
         $this->image = $post->img;
         
-        $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->desc);
+        $data = $this->p_rep->getData($this->title,$this->meta_desc,$this->keywords,$this->image,$this->description);
 
         $og = new OpenGraph();
 
@@ -157,13 +160,11 @@ class PostController extends Controller {
             ->image( asset('assets') . '/img/post/' . $post->img)
             ->description($post->desc)
             ->url();
-//         $this->og = $og;
-//        dd($og->renderTags());
-
+         $this->og = $og;
+         $og= $og->renderTags();
         /** ===== массив для постов типа gallery ========= */ 
         $slides = $post->img_slide;
         /** ===== End of массив для постов типа gallery ===== */
-
         
         // $post->tag('программирование');
         // $post->tag('cats');

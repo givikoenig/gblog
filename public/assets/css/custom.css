@@ -302,32 +302,38 @@ div.cart_result p {
     /*background: #FFF2DF;*/
     background: #F9FFF2;
 }
+#socket iframe {
+    height: 40rem;
+}
 
 /**/
   /**/
 
 @media screen and (max-width: 768px) {
-	.xs-m-top {
-		margin-top: 30px;
-	}
-	.logo-sign {
-		left: 45px;
-		top: 27px;
-	}
-	.small_scr {
-		margin-top: 25px;
-	}
-	.login-bg{
-		height: 50rem;
-	}
-	.login-logo{
-		visibility: hidden;
-		padding: 0;
-	}
+    .xs-m-top {
+        margin-top: 30px;
+    }
+    .logo-sign {
+        left: 45px;
+        top: 27px;
+    }
+    .small_scr {
+        margin-top: 25px;
+    }
+    .login-bg{
+        height: 50rem;
+    }
+    .login-logo{
+        visibility: hidden;
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 480px) {
-	.xs-m-top {
-		margin-top: 60px;
-	}
+    .xs-m-top {
+        margin-top: 60px;
+    }
+    #socket iframe {
+        height: 20rem;
+    }
 }

@@ -17,5 +17,6 @@ Route::group([
     $router->resource('site/posts', PostController::class);
     $router->resource('site/tags', TagController::class);
     $router->resource('site/about', AboutController::class);
+    $router->resource('site/playlist', PlaylistController::class);
 
 });

@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-6">
             <div class="copyright">
-                &copy; {{ config('app.name') }} {{ date(now()->format('Y')) }}
+                &copy; {{ config('app.name') }} {{ date('Y') > 2018 ? '2018 - ' . date('Y') : '2018' }}
             </div>
             <div class="copyright-sub-title stext-uppercase">
                 {{ mb_strtoupper('Оптимизация препятствует эволюции.') }} <small>(Алан.Дж.Перлис)</small>
@@ -17,10 +17,8 @@
         <div class="col-md-6">
             <div class="social-link pull-right circle ">
                 <a href="javascript: void(0)"><i class="fa fa-facebook"></i></a>
-                {{-- <a href="#"><i class="fa fa-twitter"></i></a> --}}
                 <a href="javascript: void(0)"><i class="fa fa-vk"></i></a>
                 <a href="javascript: void(0)"><i class="fa fa-google-plus"></i></a>
-                {{-- <a href="#"><i class="fa fa-behance"></i></a> --}}
             </div>
         </div>
 

@@ -8,23 +8,21 @@
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <meta property="og:title" content="{{ $title or 'GIviK' }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ $image or '/img/posts/photo_7830_20081101.jpg' }}" />
-    <meta property="og:description" content="{{ $desc or 'GiViK IT:SYS:WEB:PRO v.1.0' }} "/>
-    <meta property="og:url" content="{{ url()->current() }}" />
+    @if (isset($og))
+       {!! $og !!}
+    @else
+        <meta property="og:title" content="{{  'GIviK' }}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="{{ $image or asset('assets').'/img/post/tearsofsteel.jpg' }}" />
+        <meta property="og:description" content="{{ $description or 'GiViK IT:SYS:WEB:PRO v.1.0'}}"/>
+        <meta property="og:url" content="{{ url()->current() }}" />
+    @endif
 
     <!--favicon icon-->
     <link rel="icon" href="{{ asset('assets') }}/img/favicon.ico">
 
     <title>{{ $title or 'GIviK' }}</title>
 
-    <!--common style-->
-    {{-- <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'> --}}
-
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    
     <!-- inject:css -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -36,20 +34,16 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/owl-carousel/owl.theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
-    <!--<link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/fontawesome.min.css') }}">-->
     <link rel="stylesheet" href="{{ asset('assets/css/shortcodes.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/default-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/highlight/styles/ocean.css') }}">
 
-    {{-- laravel-like-comment --}}
     <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
-    {{-- <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet"> 
-    
     <!-- endinject -->
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -70,7 +64,6 @@
     <!-- preloader end -->
    
     <div class="wrapper">
-        
         
         <!--top bar-->
         @yield('topbar')
@@ -126,19 +119,13 @@
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!--<script src="{{ asset('assets/js/jquery.sharrre.js') }}"></script>-->
-    
 
     <!-- laravel-like-comment -->
     <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
 
+    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+    <script src="//yastatic.net/share2/share.js"></script>
     <!-- endinject -->
-
-<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-<script src="//yastatic.net/share2/share.js"></script>
 </body>
- <!--script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script-->
-<!-- production-версия, оптимизированная для размера и скорости-->
-<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-<!-- script src="https://unpkg.com/@saeris/vue-spinners"></script-->
 
 </html>

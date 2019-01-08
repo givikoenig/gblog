@@ -35,7 +35,6 @@ Vue.component('daterange-picker-component', require('./components/DateRangePicke
 Vue.component('ipcalc-component', require('./components/IpcalcComponent.vue'));
 Vue.component('color-component', require('./components/ColorpickerComponent.vue'));
 Vue.component('vplayer-component', require('./components/VplayerComponent.vue'));
-Vue.component('vplayer2-component', require('./components/Vplayer2Component.vue'));
 
 var prop = new Vue ({
     el: '#prop'
